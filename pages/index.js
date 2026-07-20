@@ -67,9 +67,23 @@ export default function Home() {
           href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Work+Sans:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        {/* This subdomain is a separate Vercel-hosted app - it does NOT
+            inherit Wix's site-level favicon setting. Without this, it
+            would show a generic default icon in the browser tab. */}
+        <link rel="icon" type="image/png" href="/favicon-512.png" />
       </Head>
 
       <main className="card">
+        <div className="logo-row">
+          <svg width="30" height="30" viewBox="0 0 60 60" aria-hidden="true">
+            <path d="M14 34 A18 18 0 1 1 32 52" fill="none" stroke="#D85A30" strokeWidth="5" strokeLinecap="round"/>
+            <path d="M32 52 Q46 60 56 40" fill="none" stroke="#D85A30" strokeWidth="5" strokeLinecap="round"/>
+          </svg>
+          <div>
+            <div className="logoWordmark">Roping<span>Tools</span></div>
+            <div className="logoTagline">DRAW &middot; COACH &middot; COMPETE</div>
+          </div>
+        </div>
         <div className="badge">Coming Soon</div>
         <h1>Steer Me</h1>
         <p className="body-text">
@@ -149,6 +163,37 @@ export default function Home() {
           max-width: 560px;
           margin: 0 auto;
           text-align: center;
+        }
+        /* Same logo treatment as the Wix-hosted version of this page and
+           Draw Pro's coming-soon page - icon and "Tools" keep their
+           specified original colors, "Roping" and the tagline are
+           lightened for legibility against this page's dark --leather
+           background (the originals were designed for a light
+           background, per the landing page header). */
+        .logo-row {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.6rem;
+          margin-bottom: 1.5rem;
+        }
+        .logoWordmark {
+          font-family: 'Playfair Display', serif;
+          font-weight: 700;
+          font-size: 1.15rem;
+          color: var(--cream);
+          line-height: 1.1;
+          text-align: left;
+        }
+        .logoWordmark :global(span) {
+          color: #D85A30;
+        }
+        .logoTagline {
+          font-size: 0.6rem;
+          font-weight: 600;
+          letter-spacing: 0.14em;
+          color: #8a8883;
+          margin-top: 0.1rem;
         }
         .badge {
           display: inline-block;
